@@ -2,8 +2,9 @@ package internal
 
 import (
 	"errors"
-	"github.com/jinzhu/gorm"
 	"sync"
+
+	"github.com/jinzhu/gorm"
 )
 
 type MultiDBSource struct {

@@ -12,19 +12,19 @@ logging:
 databases:
   - dsn: root:@tcp(database:3306)/test?parseTime=true
     dialect: 'mysql'
-    maxIdle: 10
-    maxOpen: 50
-    maxLifetime: 50  #单位秒 If d <= 0, connections are reused forever.
-    showSQL: true
+    max_idle: 10
+    max_open: 50
+    max_lifetime: 50  #单位秒 If d <= 0, connections are reused forever.
+    show_sql: true
   - dialect: 'sqlite3'
     dsn: ':memory:'
-    maxIdle: 10
-    maxOpen: 50
-    maxLifetime: 50  #单位秒 If d <= 0, connections are reused forever.
-    showSQL: true
+    max_idle: 10
+    max_open: 50
+    max_lifetime: 50  #单位秒 If d <= 0, connections are reused forever.
+    show_sql: true
   - dsn: "postgres://postgres:123456@postgres:5432/test?sslmode=disable"
     dialect: 'postgres'
-    maxIdle: 10
-    maxOpen: 50
-    maxLifetime: 50  #单位秒 If d <= 0, connections are reused forever.
-    showSQL: true
+    max_idle: 10
+    max_open: 50
+    max_lifetime: 50  #单位秒 If d <= 0, connections are reused forever.
+    show_sql: true

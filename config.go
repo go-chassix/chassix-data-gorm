@@ -10,10 +10,10 @@ type Datasource struct {
 type DatabaseConfig struct {
 	Dialect     string `yaml:"dialect"`
 	DSN         string `yaml:"dsn"`
-	MaxIdle     int    `yaml:"maxIdle"`
-	MaxOpen     int    `yaml:"maxOpen"`
-	MaxLifetime int    `yaml:"maxLifetime"`
-	ShowSQL     bool   `yaml:"showSQL"`
+	MaxIdle     int    `yaml:"max_idle"`
+	MaxOpen     int    `yaml:"max_open"`
+	MaxLifetime int    `yaml:"max_lifetime"`
+	ShowSQL     bool   `yaml:"show_sql"`
 }
 
 //Databases Multi Database datasource

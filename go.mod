@@ -1,4 +1,4 @@
-module c5x.io/data-gormx
+module c5x.io/data-gorm
 
 go 1.14
 

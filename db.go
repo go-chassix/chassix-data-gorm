@@ -9,7 +9,7 @@ import (
 	"c5x.io/chassix"
 	"c5x.io/logx"
 
-	"c5x.io/data-gormx/internal"
+	"c5x.io/data-gorm/internal"
 )
 
 func init() {

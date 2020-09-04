@@ -3,7 +3,7 @@ package gormx
 import (
 	"github.com/jinzhu/gorm"
 
-	"c5x.io/data-gormx/internal"
+	"c5x.io/data-gorm/internal"
 )
 
 //DB get the default(first) *Db connection

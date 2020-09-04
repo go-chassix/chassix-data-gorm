@@ -7,20 +7,20 @@ import (
 )
 
 //DB get the default(first) *Db connection
-func DB() (*gorm.DB, error) {
-	if dbs, err := DBs(); nil != err {
-		return nil, err
+func DB() *gorm.DB {
+	if dbs := DBs(); dbs == nil || len(dbs) == 0 {
+		return nil
 	} else {
-		return dbs[0], nil
+		return dbs[0]
 	}
 }
 
 //DBs get all database connections
-func DBs() ([]*gorm.DB, error) {
+func DBs() []*gorm.DB {
 	if initMultiDBSource(); 0 == multiDBSource.Size() {
-		return nil, internal.ErrNoDatabaseConfiguration
+		return nil
 	}
-	return multiDBSource.DBs, nil
+	return multiDBSource.DBs
 }
 
 //Close close all db connection

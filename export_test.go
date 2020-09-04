@@ -19,8 +19,10 @@ func TestDBs(t *testing.T) {
 	dbCfg := datasource.Databases
 	assert.NotEmpty(t, dbCfg)
 	// when
-	dbs, _ := DBs()
-	// then
+	dbs := DBs()
+	assert.NotEmpty(t, dbs)
 	assert.NotNil(t, dbs[0])
 	assert.Nil(t, dbs[0].DB().Ping())
+
+	assert.NotNil(t, DB())
 }

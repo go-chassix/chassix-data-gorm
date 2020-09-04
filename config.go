@@ -15,16 +15,3 @@ type DatabaseConfig struct {
 	MaxLifetime int    `yaml:"max_lifetime"`
 	ShowSQL     bool   `yaml:"show_sql"`
 }
-
-//Databases Multi Database datasource
-func Databases() []*DatabaseConfig {
-	return datasource.Databases
-}
-
-//Database first database datasource
-func Database() *DatabaseConfig {
-	if len(datasource.Databases) > 0 {
-		return datasource.Databases[0]
-	}
-	return nil
-}

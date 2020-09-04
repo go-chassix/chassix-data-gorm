@@ -16,7 +16,7 @@ func TestDBs(t *testing.T) {
 	// given
 	chassix.Init()
 	assert.Equal(t, "root:@tcp(database:3306)/test?parseTime=true", datasource.Databases[0].DSN)
-	dbCfg := Databases()
+	dbCfg := datasource.Databases
 	assert.NotEmpty(t, dbCfg)
 	// when
 	dbs, _ := DBs()

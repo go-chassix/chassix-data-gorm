@@ -1,7 +1,6 @@
 package gormx
 
 import (
-	"errors"
 	"sync"
 	"time"
 
@@ -9,34 +8,27 @@ import (
 
 	"c5x.io/chassix"
 	"c5x.io/logx"
+
+	"c5x.io/data-gormx/internal"
 )
 
 func init() {
 	chassix.Register(&chassix.Module{Name: chassix.ModuleDataGorm, ConfigPtr: datasource})
 }
 
-type MultiDBSource struct {
-	lock sync.RWMutex
-	dbs  []*gorm.DB
-}
-
 var (
-	ErrNoDatabaseConfiguration = errors.New("there isn't any database setting in the configuration file")
-)
-
-var (
-	multiDBSource *MultiDBSource
+	multiDBSource *internal.MultiDBSource
 	initOnce      sync.Once
 )
 
 func initMultiDBSource() {
 	initOnce.Do(func() {
 		multiCfg := datasource.Databases
-		multiDBSource = new(MultiDBSource)
-		multiDBSource.lock.Lock()
-		defer multiDBSource.lock.Unlock()
+		multiDBSource = new(internal.MultiDBSource)
+		multiDBSource.Lock.Lock()
+		defer multiDBSource.Lock.Unlock()
 		for _, v := range multiCfg {
-			multiDBSource.dbs = append(multiDBSource.dbs, mustConnectDB(v))
+			multiDBSource.DBs = append(multiDBSource.DBs, mustConnectDB(v))
 		}
 	})
 }
@@ -63,41 +55,4 @@ func mustConnectDB(dbCfg *DatabaseConfig) *gorm.DB {
 		db.DB().SetConnMaxLifetime(time.Duration(dbCfg.MaxLifetime) * time.Second)
 	}
 	return db
-}
-
-//DB get the default(first) *Db connection
-func DB() (*gorm.DB, error) {
-	if dbs, err := DBs(); nil != err {
-		return nil, err
-	} else {
-		return dbs[0], nil
-	}
-}
-
-//DBs get all database connections
-func DBs() ([]*gorm.DB, error) {
-	if initMultiDBSource(); 0 == multiDBSource.Size() {
-		return nil, ErrNoDatabaseConfiguration
-	}
-	return multiDBSource.dbs, nil
-}
-
-//Close close all db connection
-func CloseAllDB() error {
-	if 0 == multiDBSource.Size() {
-		return ErrNoDatabaseConfiguration
-	}
-	for _, v := range multiDBSource.dbs {
-		if err := v.Close(); nil != err {
-			return err
-		}
-	}
-	return nil
-}
-
-//Size get db connection size
-func (s MultiDBSource) Size() int {
-	s.lock.RLock()
-	defer s.lock.RUnlock()
-	return len(s.dbs)
 }

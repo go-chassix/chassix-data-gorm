@@ -8,12 +8,11 @@ import (
 	"github.com/jinzhu/gorm"
 
 	"c5x.io/chassix"
-	"c5x.io/chassix/config"
 	"c5x.io/logx"
 )
 
 func init() {
-	chassix.Register(&chassix.Module{Name: config.KeyDatasourceConfig, ConfigPtr: datasource})
+	chassix.Register(&chassix.Module{Name: chassix.ModuleDataGorm, ConfigPtr: datasource})
 }
 
 type MultiDBSource struct {

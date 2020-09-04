@@ -2,6 +2,14 @@ c5x.io/chassix v0.0.0-20200904062101-8902f9313ed5 h1:UZfzqLxwBuN+NssAsXpumGJx3p9
 c5x.io/chassix v0.0.0-20200904062101-8902f9313ed5/go.mod h1:RiEGWJyPqNWUILBnL/G5iFmf1km0QbrCvb20EfeB534=
 c5x.io/chassix v0.0.0-20200904065605-d560b27f2e61 h1:+xCxnpZyD5kKs8Igivn9NTZCQr5Rm69RcG5XDQO8dLI=
 c5x.io/chassix v0.0.0-20200904065605-d560b27f2e61/go.mod h1:RiEGWJyPqNWUILBnL/G5iFmf1km0QbrCvb20EfeB534=
+c5x.io/chassix v0.0.0-20200904072944-43c71a8384ef h1:4tYjQo7BOhepPan5SP3fxkhhHvLcGlzFLMkkas7eCv8=
+c5x.io/chassix v0.0.0-20200904072944-43c71a8384ef/go.mod h1:RiEGWJyPqNWUILBnL/G5iFmf1km0QbrCvb20EfeB534=
+c5x.io/chassix v0.0.0-20200904073719-9a6bdeaa0bc0 h1:1bxH1DPcNW4jA2LE4NcZ7WnbpAZn0CGpNgSyu/Sp6+M=
+c5x.io/chassix v0.0.0-20200904073719-9a6bdeaa0bc0/go.mod h1:RiEGWJyPqNWUILBnL/G5iFmf1km0QbrCvb20EfeB534=
+c5x.io/chassix v0.0.0-20200904073920-3609104ae873 h1:kHWsnNOiXB9EjaAFpFkdkWgygJav+ox0j2QtzS9QT/I=
+c5x.io/chassix v0.0.0-20200904073920-3609104ae873/go.mod h1:RiEGWJyPqNWUILBnL/G5iFmf1km0QbrCvb20EfeB534=
+c5x.io/chassix v0.0.0-20200904074305-a9ffc356a925 h1:9atWuXkTNfxwENk3nLKguYbVWcju2o3kXM3ZNBC/nxo=
+c5x.io/chassix v0.0.0-20200904074305-a9ffc356a925/go.mod h1:RiEGWJyPqNWUILBnL/G5iFmf1km0QbrCvb20EfeB534=
 c5x.io/logx v0.0.0-20200904004942-c2201b5c53ab h1:FGetlT2j32LpSXvnJnkiW5XH6SVYK3d2hVmsKWFtaf0=
 c5x.io/logx v0.0.0-20200904004942-c2201b5c53ab/go.mod h1:QHvOrYTG1v/IenRqDU4ucZcv5DuBItz5SZiNnWYaoV0=
 github.com/PuerkitoBio/goquery v1.5.1/go.mod h1:GsLWisAFVj4WgDibEWF4pvYnkVQBpKBKeU+7zCJoLcc=

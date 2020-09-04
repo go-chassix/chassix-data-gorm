@@ -14,7 +14,7 @@ import (
 func TestDBs(t *testing.T) {
 	//defer CloseAllDB()
 	// given
-	chassix.LoadConfig()
+	chassix.Init()
 	assert.Equal(t, "root:@tcp(database:3306)/test?parseTime=true", datasource.Databases[0].DSN)
 	dbCfg := Databases()
 	assert.NotEmpty(t, dbCfg)

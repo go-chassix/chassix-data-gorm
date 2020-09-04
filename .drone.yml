@@ -1,0 +1,22 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: test
+    image: golang
+    commands:
+      - sleep 35
+      - make test
+services:
+  - name: database
+    image: mysql
+    ports:
+      - 3306
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: test
+  - name: postgres
+    image: postgres:10-alpine
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: test

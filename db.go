@@ -52,17 +52,13 @@ func mustConnectDB(dbCfg *DatabaseConfig) *gorm.DB {
 	if dialect == "postgres" {
 		db, err = gorm.Open(postgres.New(postgres.Config{
 			Conn: sqlDB,
-		}), &gorm.Config{})
+		}), &gorm.Config{
+			Logger: NewLogger(&dbCfg.Logger),
+		})
 	}
 	if err != nil {
 		log.Fatalln(err)
 	}
-	//sqlDB, err := db.DB()
-	//if err != nil {
-	//	//todo
-	//}
-	//sqlDB.LogMode(dbCfg.ShowSQL)
-
 	if dbCfg.MaxIdle > 0 {
 		sqlDB.SetMaxIdleConns(dbCfg.MaxIdle)
 	}

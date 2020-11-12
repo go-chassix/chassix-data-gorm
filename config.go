@@ -1,5 +1,10 @@
 package gormx
 
+import (
+	"gorm.io/gorm/logger"
+	"time"
+)
+
 var datasource = new(Datasource)
 
 type Datasource struct {
@@ -8,10 +13,17 @@ type Datasource struct {
 
 //DatabaseConfig db datasource
 type DatabaseConfig struct {
-	Dialect     string `yaml:"dialect"`
-	DSN         string `yaml:"dsn"`
-	MaxIdle     int    `yaml:"max_idle"`
-	MaxOpen     int    `yaml:"max_open"`
-	MaxLifetime int    `yaml:"max_lifetime"`
-	ShowSQL     bool   `yaml:"show_sql"`
+	Dialect     string       `yaml:"dialect"`
+	DSN         string       `yaml:"dsn"`
+	MaxIdle     int          `yaml:"max_idle"`
+	MaxOpen     int          `yaml:"max_open"`
+	MaxLifetime int          `yaml:"max_lifetime"`
+	ShowSQL     bool         `yaml:"show_sql"`
+	Logger      LoggerConfig `yaml:"logger"`
+}
+
+type LoggerConfig struct {
+	SlowThreshold time.Duration
+	LogLevel      logger.LogLevel
+	Colorful      bool
 }

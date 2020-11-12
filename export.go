@@ -29,8 +29,10 @@ func CloseAllDB() error {
 		return internal.ErrNoDatabaseConfiguration
 	}
 	for _, v := range multiDBSource.DBs {
-		if err := v.Close(); nil != err {
-			return err
+		if db, err := v.DB(); err == nil {
+			if err := db.Close(); nil != err {
+				return err
+			}
 		}
 	}
 	return nil

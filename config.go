@@ -24,6 +24,6 @@ type DatabaseConfig struct {
 
 type LoggerConfig struct {
 	SlowThreshold time.Duration   `yaml:"slow_threshold"`
-	LogLevel      logger.LogLevel `yaml:"log_level"`
+	Level         logger.LogLevel `yaml:"level"`
 	Colorful      bool            `yaml:"colorful"`
 }

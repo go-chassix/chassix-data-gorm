@@ -18,7 +18,7 @@ func NewLogger(logCfg *LoggerConfig) *Logger {
 	log.Config = logger.Config{
 		SlowThreshold: logCfg.SlowThreshold,
 		Colorful:      logCfg.Colorful,
-		LogLevel:      logCfg.LogLevel,
+		LogLevel:      logCfg.Level,
 	}
 	return log
 }

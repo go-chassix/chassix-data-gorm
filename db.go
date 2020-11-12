@@ -2,6 +2,9 @@ package gormx
 
 import (
 	"database/sql"
+	"gorm.io/gorm/logger"
+	lg "log"
+	"os"
 	"sync"
 	"time"
 
@@ -53,7 +56,14 @@ func mustConnectDB(dbCfg *DatabaseConfig) *gorm.DB {
 		db, err = gorm.Open(postgres.New(postgres.Config{
 			Conn: sqlDB,
 		}), &gorm.Config{
-			Logger: NewLogger(&dbCfg.Logger),
+			Logger: logger.New(
+				lg.New(os.Stdout, "\r\n", lg.LstdFlags),
+				logger.Config{
+					SlowThreshold: dbCfg.Logger.SlowThreshold,
+					Colorful:      dbCfg.Logger.Colorful,
+					LogLevel:      dbCfg.Logger.Level,
+				},
+			),
 		})
 	}
 	if err != nil {

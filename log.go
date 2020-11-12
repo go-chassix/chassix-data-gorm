@@ -41,5 +41,5 @@ func (l *Logger) Error(ctx context.Context, str string, args ...interface{}) {
 	l.entry.Error(str, args)
 }
 func (l *Logger) Trace(ctx context.Context, begin time.Time, fc func() (string, int64), err error) {
-	l.entry.Trace("begin:%s, error: %s", begin.String(), err.Error())
+	l.entry.Trace("begin:%s, error: %v", begin.String(), err)
 }

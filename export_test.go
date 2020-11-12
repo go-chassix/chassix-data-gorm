@@ -3,10 +3,10 @@ package gormx
 import (
 	"testing"
 
-	_ "github.com/jinzhu/gorm/dialects/mysql"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"github.com/stretchr/testify/assert"
+	_ "gorm.io/gorm/dialects/mysql"
+	_ "gorm.io/gorm/dialects/postgres"
+	_ "gorm.io/gorm/dialects/sqlite"
 
 	"c5x.io/chassix"
 )

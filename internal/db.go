@@ -4,7 +4,7 @@ import (
 	"errors"
 	"sync"
 
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 type MultiDBSource struct {

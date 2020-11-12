@@ -1,7 +1,7 @@
 package gormx
 
 import (
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 
 	"c5x.io/data-gorm/internal"
 )

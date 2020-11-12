@@ -1,10 +1,12 @@
 package gormx
 
 import (
+	"database/sql"
 	"sync"
 	"time"
 
-	"github.com/jinzhu/gorm"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 
 	"c5x.io/chassix"
 	"c5x.io/logx"
@@ -39,20 +41,36 @@ func mustConnectDB(dbCfg *DatabaseConfig) *gorm.DB {
 	if "" == dialect {
 		dialect = "mysql"
 	}
-	db, err := gorm.Open(dialect, dbCfg.DSN)
+
+	var sqlDB *sql.DB
+	var err error
+	if sqlDB, err = sql.Open(dialect, dbCfg.DSN); err != nil {
+		//todo
+		log.Fatal(err)
+	}
+	var db *gorm.DB
+	if dialect == "postgres" {
+		db, err = gorm.Open(postgres.New(postgres.Config{
+			Conn: sqlDB,
+		}), &gorm.Config{})
+	}
 	if err != nil {
 		log.Fatalln(err)
 	}
-	db.LogMode(dbCfg.ShowSQL)
+	//sqlDB, err := db.DB()
+	//if err != nil {
+	//	//todo
+	//}
+	//sqlDB.LogMode(dbCfg.ShowSQL)
 
 	if dbCfg.MaxIdle > 0 {
-		db.DB().SetMaxIdleConns(dbCfg.MaxIdle)
+		sqlDB.SetMaxIdleConns(dbCfg.MaxIdle)
 	}
 	if dbCfg.MaxOpen > 0 && dbCfg.MaxOpen > dbCfg.MaxIdle {
-		db.DB().SetMaxOpenConns(100)
+		sqlDB.SetMaxOpenConns(100)
 	}
 	if dbCfg.MaxLifetime > 0 {
-		db.DB().SetConnMaxLifetime(time.Duration(dbCfg.MaxLifetime) * time.Second)
+		sqlDB.SetConnMaxLifetime(time.Duration(dbCfg.MaxLifetime) * time.Second)
 	}
 	return db
 }

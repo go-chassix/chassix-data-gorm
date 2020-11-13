@@ -20,5 +20,5 @@ func TestDBs(t *testing.T) {
 	assert.NotEmpty(t, dbs)
 	assert.NotNil(t, dbs[0])
 
-	assert.NotNil(t, DB())
+	//assert.NotNil(t, DB())
 }

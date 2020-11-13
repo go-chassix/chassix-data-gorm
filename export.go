@@ -5,6 +5,17 @@ import (
 	"gorm.io/gorm"
 )
 
+const (
+	DriverMysql    = "mysql"
+	DriverPostgres = "postgres"
+)
+
+var driver map[string]DatabaseProvider = make(map[string]DatabaseProvider)
+
+func RegisterDriver(dType string, provider DatabaseProvider) {
+	driver[dType] = provider
+}
+
 //DB get the default(first) *Db connection
 //func DB() *gorm.DB {
 //	if dbs := DBs(); dbs == nil || len(dbs) == 0 {

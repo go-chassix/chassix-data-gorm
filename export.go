@@ -27,9 +27,9 @@ func DB() *gorm.DB {
 
 //DBs get all database connections
 func DBs() []*gorm.DB {
-	//if initMultiDBSource(); 0 == multiDBSource.Size() {
-	//	return nil
-	//}
+	if initMultiDBSource(); 0 == multiDBSource.Size() {
+		return nil
+	}
 	return multiDBSource.DBs
 }
 func SetDB(index int, db *gorm.DB) {

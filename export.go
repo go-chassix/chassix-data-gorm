@@ -17,13 +17,13 @@ func RegisterDriver(dType string, provider DatabaseProvider) {
 }
 
 //DB get the default(first) *Db connection
-//func DB() *gorm.DB {
-//	if dbs := DBs(); dbs == nil || len(dbs) == 0 {
-//		return nil
-//	} else {
-//		return dbs[0]
-//	}
-//}
+func DB() *gorm.DB {
+	if dbs := DBs(); dbs == nil || len(dbs) == 0 {
+		return nil
+	} else {
+		return dbs[0]
+	}
+}
 
 //DBs get all database connections
 func DBs() []*gorm.DB {

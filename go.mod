@@ -8,5 +8,5 @@ require (
 	github.com/stretchr/testify v1.5.1
 	golang.org/x/sys v0.0.0-20200831180312-196b9ba8737a // indirect
 	gorm.io/driver/postgres v1.0.5 // indirect
-	gorm.io/gorm v1.20.6
+	gorm.io/gorm v1.20.7
 )

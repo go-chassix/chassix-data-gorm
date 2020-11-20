@@ -4,6 +4,8 @@ import (
 	"c5x.io/logx"
 	"context"
 	"gorm.io/gorm/logger"
+	"log"
+	"os"
 	"time"
 )
 
@@ -23,6 +25,27 @@ func NewLogger(logCfg *LoggerConfig) *Logger {
 	return log
 }
 
+func DefaultLogger(logCfg *LoggerConfig) logger.Interface {
+	slowThreshold := 200 * time.Millisecond
+
+	logLevel := logger.Warn
+	colorful := true
+
+	if logCfg != nil {
+		if logCfg.SlowThreshold > 0 {
+			slowThreshold = logCfg.SlowThreshold
+		}
+		if logCfg.Level > 0 {
+			logLevel = logCfg.Level
+		}
+		colorful = logCfg.Colorful
+	}
+	return logger.New(log.New(os.Stdout, "\r\n", log.LstdFlags), logger.Config{
+		SlowThreshold: slowThreshold,
+		LogLevel:      logLevel,
+		Colorful:      colorful,
+	})
+}
 func (l *Logger) LogMode(level logger.LogLevel) logger.Interface {
 
 	newLogger := *l

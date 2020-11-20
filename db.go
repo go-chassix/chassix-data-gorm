@@ -23,7 +23,7 @@ func initMultiDBSource() {
 		multiDBSource = new(internal.MultiDBSource)
 		multiDBSource.Lock.Lock()
 		defer multiDBSource.Lock.Unlock()
-		multiDBSource.DBs = make([]*gorm.DB, len(multiCfg))
+		multiDBSource.DBs = make([]*gorm.DB, 0)
 		for _, v := range multiCfg {
 			db, err := driver[v.Dialect].Connect(v)
 			if err != nil {

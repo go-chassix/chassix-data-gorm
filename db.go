@@ -1,6 +1,7 @@
 package gormx
 
 import (
+	"log"
 	"sync"
 
 	"c5x.io/chassix"
@@ -27,7 +28,8 @@ func initMultiDBSource() {
 		for _, v := range multiCfg {
 			db, err := driver[v.Dialect].Connect(v)
 			if err != nil {
-				//todo
+				log.Fatalf("connect db failed: %s\n", err)
+				continue
 			}
 			multiDBSource.DBs = append(multiDBSource.DBs, db)
 		}
